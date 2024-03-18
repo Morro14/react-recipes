@@ -1,0 +1,30 @@
+.recipe-image-text-container {
+  display: flex;
+  /* margin-left: 20%;
+  margin-right: 20%; */
+}
+
+.recipe-image {
+  width: 300px;
+  height: 180px;
+}
+
+.recipe-description {
+  font-size: smaller;
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.recipe-one-container {
+  display: block;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.recipe-ingridients {
+  text-align: left;
+}
+
+.recipe-directions {
+  text-align: left;
+}

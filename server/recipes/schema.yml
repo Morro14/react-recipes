@@ -1,0 +1,169 @@
+openapi: 3.0.3
+info:
+  title: Cooking Recipes API
+  version: 1.0.0
+  description: Practice project with API
+paths:
+  /api/categories/:
+    get:
+      operationId: api_categories_list
+      description: A simple ViewSet for retrieving Categories.
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+          description: ''
+  /api/categories/{slug}/:
+    get:
+      operationId: api_categories_retrieve
+      description: A simple ViewSet for retrieving Categories.
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+  /api/recipes/:
+    get:
+      operationId: api_recipes_list
+      description: A simple ViewSet for retrieving recipes.
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipe'
+          description: ''
+  /api/recipes/{slug}/:
+    get:
+      operationId: api_recipes_retrieve
+      description: A simple ViewSet for retrieving recipes.
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+          description: ''
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        name:
+          type: string
+          description: name
+          maxLength: 255
+        slug:
+          type: string
+          maxLength: 255
+          pattern: ^[-a-zA-Z0-9_]+$
+        recipes:
+          oneOf:
+          - type: array
+            items: {}
+          - type: object
+            additionalProperties: {}
+          readOnly: true
+      required:
+      - name
+      - recipes
+      - slug
+    Recipe:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          description: name
+          maxLength: 255
+        slug:
+          type: string
+          nullable: true
+          maxLength: 255
+          pattern: ^[-a-zA-Z0-9_]+$
+        rating:
+          type: number
+          format: double
+        description:
+          type: string
+        ingridients:
+          type: string
+        directions:
+          type: string
+        note:
+          type: string
+          nullable: true
+        image:
+          type: string
+          format: uri
+        prep_time:
+          type: string
+        cook_time:
+          type: string
+        total_time:
+          type: string
+        servings:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        category:
+          type: integer
+      required:
+      - category
+      - id
+      - name
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

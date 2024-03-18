@@ -1,0 +1,33 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(252, 194, 34);
+
+}
+
+.categories-container {
+    display: flex;
+    text-transform: capitalize;
+    justify-content: space-between;
+    
+}
+
+.categories-container > a {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    text-decoration: none;
+    font-size: large;
+    color:black
+
+}
+
+h1 {
+    text-decoration: none;
+    color:rgb(7, 7, 7);
+}
+
+a {
+    text-decoration: none;
+}
