@@ -2,10 +2,11 @@ import axios from "axios";
 import { useLoaderData } from "react-router-dom";
 import "../styles/Category.css";
 import { Link } from "react-router-dom";
+import { serverURL } from "../index.js";
 
 export async function getRecipes({ params }) {
   const categoryData = await axios
-    .get(`http://127.0.0.1:8000/api/categories/${params.categoryName}`)
+    .get(`${serverURL}/api/categories/${params.categoryName}`)
     .then((res) => {
       return res.data;
     });
@@ -15,7 +16,6 @@ export async function getRecipes({ params }) {
 function Category() {
   const data = useLoaderData().categoryData;
   const recipes = data.recipes;
-  console.log(data);
 
   const title = data.name;
   const raiting = (r) => {

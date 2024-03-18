@@ -2,14 +2,13 @@ import axios from "axios";
 import { useLoaderData } from "react-router-dom";
 import "../styles/RecipeAll.css";
 import { Link } from "react-router-dom";
+import { serverURL } from "../index.js";
 
 export async function getAllRecipes({ params }) {
-  const data = await axios
-    .get(`http://127.0.0.1:8000/api/recipes`)
-    .then((res) => {
-      console.log("Sending request: all recipes ");
-      return res.data;
-    });
+  const data = await axios.get(`${serverURL}/api/recipes`).then((res) => {
+    console.log("Sending request: all recipes ");
+    return res.data;
+  });
   return { data };
 }
 

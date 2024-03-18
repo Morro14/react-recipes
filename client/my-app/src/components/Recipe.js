@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useLoaderData } from "react-router-dom";
 import "../styles/Recipe.css";
+import { serverURL } from "../index.js";
 
 export async function getRecipe({ params }) {
   const data = await axios
-    .get(`http://127.0.0.1:8000/api/recipes/${params.recipeName}`)
+    .get(`${serverURL}/api/recipes/${params.recipeName}`)
     .then((res) => {
-      console.log("Sending request: get recipe ");
       return res.data;
     });
   return { data };
@@ -14,7 +14,6 @@ export async function getRecipe({ params }) {
 
 function Recipe() {
   const recipe = useLoaderData();
-  console.log(recipe);
   return !recipe ? (
     <>loading</>
   ) : (

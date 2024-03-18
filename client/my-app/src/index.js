@@ -2,10 +2,12 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
+
 import { getRecipes as categoryLoader } from "./components/Category";
 import { getAllRecipes as recipesLoader } from "./components/RecipeAll";
 import { getRecipe as recipeLoader } from "./components/Recipe";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
 import ErrorPage from "./error-page";
 import Main from "./components/Main";
 import Category from "./components/Category";
@@ -15,6 +17,9 @@ import SwaggerUI from "./components/SwaggerUI";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
+
+export const serverURL = "http://127.0.0.1:8000";
+
 const router = createBrowserRouter([
   {
     path: "/",

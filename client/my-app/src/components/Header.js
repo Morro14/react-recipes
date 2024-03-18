@@ -2,12 +2,12 @@ import { useState } from "react";
 import axios from "axios";
 import "../styles/Header.css";
 import { Link } from "react-router-dom";
-
+import { serverURL } from "../index.js";
 export default function Header() {
   const [categories, setCategories] = useState();
 
   if (!categories) {
-    axios.get("http://127.0.0.1:8000/api/categories/").then((res) => {
+    axios.get(`${serverURL}/api/categories/`).then((res) => {
       setCategories(res.data);
     });
   }
