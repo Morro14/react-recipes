@@ -41,7 +41,7 @@ function Category() {
               <Link to={`/recipe/${r.slug}`}>
                 <img
                   alt={`dish-${r.id}`}
-                  className="recipe-grid"
+                  className="recipe-grid-image"
                   src={`http://127.0.0.1:8000${r.image}`}
                 ></img>
               </Link>
